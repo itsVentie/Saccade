@@ -3,9 +3,11 @@ pub mod inference;
 pub mod pipeline;
 pub mod processing;
 
+use pipeline::{CameraDeviceInfo, FramePipeline};
+
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+fn get_available_cameras() -> Result<Vec<CameraDeviceInfo>, String> {
+    FramePipeline::list_cameras().map_err(|e| e.to_string())
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]

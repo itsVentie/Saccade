@@ -12,6 +12,8 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
 crossbeam-channel = "0.5"
+bytes = "1.6"
+nokhwa = { version = "0.10", features = ["input-nokwa", "dec-format-obj"] }
 ort = { version = "2.0.0-rc.9", features = ["cuda"] } # Или directml / coreml при необходимости
 ndarray = "0.16"
 image = "0.25"
