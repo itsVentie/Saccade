@@ -53,7 +53,7 @@ impl FramePipeline {
 
         std::thread::spawn(move || {
             let index = CameraIndex::Index(camera_idx);
-            let requested = RequestedFormat::new(RequestedFormatType::AbsoluteHighestFrameRate);
+            let requested = RequestedFormat::new::<RgbAFormat>(RequestedFormatType::AbsoluteHighestFrameRate);
 
             let mut camera = match Camera::new(index, requested) {
                 Ok(cam) => cam,
@@ -94,11 +94,8 @@ impl FramePipeline {
                                 .unwrap_or_default()
                                 .as_millis() as u64,
                         };
-
-                        if frame_tx.is_full() {
-                            let _ = frame_rx.try_recv();
-                        }
-                        let _ = frame_tx.send(video_frame);
+                        
+                        let _ = frame_tx.try_send(video_frame);
                     }
                     Err(err) => {
                         error!("Failed to capture frame: {err}");

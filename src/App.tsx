@@ -1,50 +1,46 @@
-import { useState } from "preact/hooks";
-import preactLogo from "./assets/preact.svg";
-import { invoke } from "@tauri-apps/api/core";
+import { useCamera } from "./hooks/useCamera";
+import { Header } from "./components/Header";
+import { CameraSelector } from "./components/CameraSelector";
+import { ControlPanel } from "./components/ControlPanel";
+import { PerformanceStats } from "./components/PerformanceStats";
+import { Viewport } from "./components/Viewport";
 import "./App.css";
 
-function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
+export function App() {
+  const {
+    cameras,
+    selectedCamera,
+    selectCamera,
+    isStreaming,
+    toggleStream,
+    refreshCameras,
+    status,
+  } = useCamera();
 
   return (
-    <main class="container">
-      <h1>Welcome to Tauri + Preact</h1>
-
-      <div class="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" class="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
-        </a>
+    <div className="container">
+      <Header />
+      <div className="main-content">
+        <aside className="sidebar">
+          <CameraSelector
+            cameras={cameras}
+            selected={selectedCamera}
+            onSelect={selectCamera}
+            onRefresh={refreshCameras}
+            disabled={isStreaming}
+          />
+          <ControlPanel
+            isStreaming={isStreaming}
+            onToggleStream={toggleStream}
+            disabled={selectedCamera === null}
+          />
+        </aside>
+        <section className="card preview-card">
+          <PerformanceStats isStreaming={isStreaming} status={status} />
+          <Viewport isStreaming={isStreaming} selectedCamera={selectedCamera} />
+        </section>
       </div>
-      <p>Click on the Tauri, Vite, and Preact logos to learn more.</p>
-
-      <form
-        class="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onInput={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
+    </div>
   );
 }
 
