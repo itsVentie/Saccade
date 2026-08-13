@@ -45,7 +45,7 @@ Saccade/
 * [x] Initialize Tauri v2 workspace and Rust backend structure.
 * [x] Implement async frame capture pipeline for local webcams and video files.
 * [x] Set up zero-copy frame buffer pooling to minimize memory allocations.
-* [ ] Integrate basic Preact UI dashboard for device selection and previews.
+* [x] Integrate basic Preact UI dashboard for device selection and previews.
 
 </details>
 
