@@ -13,10 +13,10 @@ serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
 crossbeam-channel = "0.5"
 bytes = "1.6"
-nokhwa = { version = "0.10", features = ["input-nokwa", "dec-format-obj"] }
-ort = { version = "2.0.0-rc.9", features = ["cuda"] } # Или directml / coreml при необходимости
-ndarray = "0.16"
+nokhwa = { version = "0.10", features = ["input-native", "decoding"] }
+ort = { version = "2.0.0-rc.9", features = ["cuda"] }
 image = "0.25"
+ndarray = "0.16"
 anyhow = "1.0"
 tracing = "0.1"
 tracing-subscriber = "0.3"

@@ -1,5 +1,6 @@
-use std:sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
+use anyhow::Result;
 use bytes::Bytes;
 use crossbeam_channel::{bounded, Receiver, Sender};
 use nokhwa::pixel_format::RgbAFormat;
@@ -16,9 +17,9 @@ pub struct CameraDeviceInfo {
 
 pub struct VideoFrame {
     pub width: u32,
-    pub height: u32,    
+    pub height: u32,
     pub data: Bytes,
-    pub timestamp: u64,
+    pub timestamp_ms: u64,
 }
 
 pub struct FramePipeline {
@@ -95,7 +96,7 @@ impl FramePipeline {
                         };
 
                         if frame_tx.is_full() {
-                            let _ = frame_rx.try_recv(); 
+                            let _ = frame_rx.try_recv();
                         }
                         let _ = frame_tx.send(video_frame);
                     }
