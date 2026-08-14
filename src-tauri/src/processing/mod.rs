@@ -2,6 +2,8 @@ use anyhow::Result;
 //use image::*;
 use ndarray::Array4;
 
+pub mod nms;
+
 pub fn preprocess_frame(
     raw_bytes: &[u8],
     width: u32,

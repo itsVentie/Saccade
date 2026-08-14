@@ -2,7 +2,9 @@ use anyhow::{anyhow, Result};
 use ndarray::Array4;
 use ort::session::builder::GraphOptimizationLevel;
 use ort::session::Session;
-use ort::value::Tensor; 
+use ort::value::Tensor;
+
+pub mod types;
 
 pub struct InferenceEngine {
     session: Session,
