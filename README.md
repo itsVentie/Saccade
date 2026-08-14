@@ -52,10 +52,10 @@ Saccade/
 <details>
 <summary>Phase 2: Inference Integration</summary>
 
-* [ ] Configure ONNX Runtime (`ort`) with CUDA and CPU execution providers.
+* [x] Configure ONNX Runtime (`ort`) with CUDA and CPU execution providers.
 * [ ] Implement SCRFD / RetinaFace model loader for high-speed face detection and landmark extraction.
 * [ ] Integrate InsightFace (`inswapper_128.onnx`) embedding extraction and face-swapping inference loop.
-* [ ] Optimize tensor conversion pipelines between image buffers and model inputs.
+* [x] Optimize tensor conversion pipelines between image buffers and model inputs.
 
 </details>
 
