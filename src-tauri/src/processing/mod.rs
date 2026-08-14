@@ -3,6 +3,7 @@ use anyhow::Result;
 use ndarray::Array4;
 
 pub mod nms;
+pub mod scrfd;
 
 pub fn preprocess_frame(
     raw_bytes: &[u8],
