@@ -24,13 +24,13 @@ By leveraging **Rust** for frame orchestration, concurrency, and zero-copy memor
 Saccade/
 ├── src-tauri/             # Rust backend core
 │   ├── src/
+│   │   ├── models/        # Directory for ONNX weight files
 │   │   ├── pipeline/      # Frame capture, queue management, and threading
 │   │   ├── inference/     # ONNX Runtime wrappers (Detector & Inswapper)
 │   │   ├── processing/    # Face alignment, color correction, and blending
 │   │   └── main.rs        # Tauri application entry point
 │   └── Cargo.toml
 ├── src/                   # Frontend UI (Preact)
-├── models/                # Directory for ONNX weight files
 └── README.md
 
 ```
