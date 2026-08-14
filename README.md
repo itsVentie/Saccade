@@ -39,8 +39,8 @@ Saccade/
 
 ## Development Roadmap
 
-<details>
-<summary>Phase 1: Core Architecture & Pipeline Foundation</summary>
+<details open>
+<summary><b>Phase 1: Core Architecture & Pipeline Foundation</b></summary>
 
 * [x] Initialize Tauri v2 workspace and Rust backend structure.
 * [x] Implement async frame capture pipeline for local webcams and video files.
@@ -49,18 +49,19 @@ Saccade/
 
 </details>
 
-<details>
-<summary>Phase 2: Inference Integration</summary>
+<details open>
+<summary><b>Phase 2: Inference Integration</b></summary>
 
 * [x] Configure ONNX Runtime (`ort`) with CUDA and CPU execution providers.
-* [ ] Implement SCRFD / RetinaFace model loader for high-speed face detection and landmark extraction.
-* [ ] Integrate InsightFace (`inswapper_128.onnx`) embedding extraction and face-swapping inference loop.
 * [x] Optimize tensor conversion pipelines between image buffers and model inputs.
+* [x] Implement post-processing core utilities (NMS algorithm, IoU math, and detection data types).
+* [ ] Implement SCRFD / RetinaFace model loader & anchor decoder for high-speed face detection and landmark extraction.
+* [ ] Integrate InsightFace (`inswapper_128.onnx`) embedding extraction and face-swapping inference loop.
 
 </details>
 
 <details>
-<summary>Phase 3: Post-Processing & Blending Optimization</summary>
+<summary><b>Phase 3: Post-Processing & Blending Optimization</b></summary>
 
 * [ ] Implement facial alignment and affine transformation matrices.
 * [ ] Add seamless blending algorithms (Poisson blending / Mask feathering) to eliminate harsh edges.
@@ -69,7 +70,7 @@ Saccade/
 </details>
 
 <details>
-<summary>Phase 4: Advanced Vision & Virtual Camera Pipeline</summary>
+<summary><b>Phase 4: Advanced Vision & Virtual Camera Pipeline</b></summary>
 
 * [ ] Integrate native Virtual Camera driver support (OBS VirtualCam / v4l2loopback IPC).
 * [ ] Implement multi-face tracking and target selection (ID-based face locking).
@@ -79,7 +80,7 @@ Saccade/
 </details>
 
 <details>
-<summary>Phase 5: Audio, Latency Optimization & Security Controls</summary>
+<summary><b>Phase 5: Audio, Latency Optimization & Security Controls</b></summary>
 
 * [ ] Add real-time Voice Conversion (RVC) pipeline synchronized with video output streams.
 * [ ] Implement hardware-accelerated NVENC / VAAPI / AMF video encoding for low-bitrate streaming.
@@ -89,7 +90,7 @@ Saccade/
 </details>
 
 <details>
-<summary>Phase 6: Performance Tuning & Release</summary>
+<summary><b>Phase 6: Performance Tuning & Release</b></summary>
 
 * [ ] Benchmark end-to-end latency and throughput across various GPU architectures.
 * [ ] Implement multi-threaded frame dropping and queue backpressure handling for real-time streaming.
