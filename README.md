@@ -55,7 +55,7 @@ Saccade/
 * [x] Configure ONNX Runtime (`ort`) with CUDA and CPU execution providers.
 * [x] Optimize tensor conversion pipelines between image buffers and model inputs.
 * [x] Implement post-processing core utilities (NMS algorithm, IoU math, and detection data types).
-* [ ] Implement SCRFD / RetinaFace model loader & anchor decoder for high-speed face detection and landmark extraction.
+* [x] Implement SCRFD / RetinaFace model loader & anchor decoder for high-speed face detection and landmark extraction.
 * [ ] Integrate InsightFace (`inswapper_128.onnx`) embedding extraction and face-swapping inference loop.
 
 </details>
