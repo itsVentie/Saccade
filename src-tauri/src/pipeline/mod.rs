@@ -23,7 +23,9 @@ pub struct VideoFrame {
 }
 
 pub struct FramePipeline {
+    #[allow(dead_code)]
     is_running: Arc<AtomicBool>,
+    #[allow(dead_code)]
     frame_rx: Receiver<VideoFrame>,
 }
 
