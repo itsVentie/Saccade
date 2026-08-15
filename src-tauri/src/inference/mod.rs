@@ -26,22 +26,26 @@ impl InferenceEngine {
         Ok(Self { session })
     }
 
-    pub fn run_inference(&mut self, input_tensor: Array4<f32>) -> Result<Vec<f32>> {
-    let shape = input_tensor.shape().to_vec();
-    let data = input_tensor.into_raw_vec();
+    pub fn run_inference(&mut self, input_tensor: Array4<f32>) -> Result<Vec<Vec<f32>>> {
+        let shape = input_tensor.shape().to_vec();
+        let data = input_tensor.into_raw_vec();
 
-    let ort_input = Tensor::from_array((shape, data))
-        .map_err(|e| anyhow!("Failed to create input tensor: {e}"))?;
+        let ort_input = Tensor::from_array((shape, data))
+            .map_err(|e| anyhow!("Failed to create input tensor: {e}"))?;
 
-    let outputs = self
-        .session
-        .run(ort::inputs!["input" => ort_input])
-        .map_err(|e| anyhow!("Inference execution failed: {e}"))?;
+        let outputs = self
+            .session
+            .run(ort::inputs!["input" => ort_input])
+            .map_err(|e| anyhow!("Inference execution failed: {e}"))?;
 
-    let (_shape, slice) = outputs["output"]
-        .try_extract_tensor::<f32>()
-        .map_err(|e| anyhow!("Failed to extract output tensor: {e}"))?;
+        let mut results = Vec::with_capacity(outputs.len());
+        for output in outputs.values() {
+            let (_shape, slice) = output
+                .try_extract_tensor::<f32>()
+                .map_err(|e| anyhow!("Failed to extract output tensor: {e}"))?;
+            results.push(slice.to_vec());
+        }
 
-    Ok(slice.to_vec())
-}
+        Ok(results)
+    }
 }

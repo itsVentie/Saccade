@@ -4,6 +4,7 @@ use ndarray::Array4;
 
 pub mod nms;
 pub mod scrfd;
+pub mod detector;
 
 pub fn preprocess_frame(
     raw_bytes: &[u8],
