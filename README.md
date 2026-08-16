@@ -63,9 +63,9 @@ Saccade/
 <details>
 <summary><b>Phase 3: Post-Processing & Blending Optimization</b></summary>
 
-* [ ] Implement facial alignment and affine transformation matrices.
-* [ ] Add seamless blending algorithms (Poisson blending / Mask feathering) to eliminate harsh edges.
-* [ ] Implement temporal smoothing filters to reduce jitter and flickering across consecutive video frames.
+* [x] Implement facial alignment and affine transformation matrices.
+* [x] Add seamless blending algorithms (Poisson blending / Mask feathering) to eliminate harsh edges.
+* [x] Implement temporal smoothing filters to reduce jitter and flickering across consecutive video frames.
 
 </details>
 
