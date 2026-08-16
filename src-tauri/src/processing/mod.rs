@@ -6,6 +6,7 @@ pub mod nms;
 pub mod scrfd;
 pub mod detector;
 pub mod inswapper;  
+pub mod transform;
 
 pub fn preprocess_frame(
     raw_bytes: &[u8],
