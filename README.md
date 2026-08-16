@@ -56,7 +56,7 @@ Saccade/
 * [x] Optimize tensor conversion pipelines between image buffers and model inputs.
 * [x] Implement post-processing core utilities (NMS algorithm, IoU math, and detection data types).
 * [x] Implement SCRFD / RetinaFace model loader & anchor decoder for high-speed face detection and landmark extraction.
-* [ ] Integrate InsightFace (`inswapper_128.onnx`) embedding extraction and face-swapping inference loop.
+* [x] Integrate InsightFace (`inswapper_128.onnx`) embedding extraction and face-swapping inference loop.
 
 </details>
 
