@@ -1,3 +1,11 @@
+pub mod config;
+pub mod processor;
+pub mod state;
+
+pub use config::PipelineConfig;
+pub use processor::FrameProcessor;
+pub use state::PipelineState;
+
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use anyhow::{anyhow, Result};
