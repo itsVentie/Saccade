@@ -48,9 +48,13 @@ impl ScrfdDetector {
             return Err(anyhow!("SCRFD output count mismatch: expected at least 2 outputs (scores, bboxes)"));
         }
 
-        let raw_scores = &raw_outputs[0];
-        let raw_bboxes = &raw_outputs[1];
-        let raw_kps = raw_outputs.get(2).map(|v| v.as_slice());
+        let raw_scores = raw_outputs[0]
+            .as_slice()
+            .ok_or_else(|| anyhow!("SCRFD score output is not contiguous"))?;
+        let raw_bboxes = raw_outputs[1]
+            .as_slice()
+            .ok_or_else(|| anyhow!("SCRFD bbox output is not contiguous"))?;
+        let raw_kps = raw_outputs.get(2).and_then(|v| v.as_slice());
 
         let raw_detections = self.decoder.decode(
             &self.anchors,
