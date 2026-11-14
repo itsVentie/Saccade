@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "saccade.ventie.dev",
   "build": {
-    "beforeDevCommand": "pnpm dev",
+    "beforeDevCommand": "bun dev",
     "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "pnpm build",
+    "beforeBuildCommand": "bun build",
     "frontendDist": "../dist"
   },
   "app": {
